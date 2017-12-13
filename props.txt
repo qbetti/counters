@@ -1,0 +1,18 @@
+Sur la trace de Active directory :
+
+Quel pourcentage de la trace dans un intervalle ou un logon a eu lieu, et le logoff correspondant n’a pas encore eu lieu.
+Est-ce qu’il existe un intervalle de longeur de plus de 100 entre logon et logoff?
+Combien de paires logon-> logoff sont présentent dans la trace:
+Ce sont les trois dernières propriétés du première example de la section 5 avec p= logon et q = logoff
+Est-ce qu’il y a un point dans la trace où jusqu’à ce point, plus de logoff ont eu lieu que de logon (\exists_{<0}C{ \top}\{logon} - C{ \top}\{lofoff})
+Combien de Sensitive Privilege Use sont présent entre un logon et un log off (C’est la première propriété du troisème exmaple de la section 5).
+
+
+Pour la trace de method names
+Est-ce qu’il existe une série ininterrompue d’appel de la fct org/gjt/sp/jedit/buffer/LineManager de longueur de plus 10 (test du nombre max d’appel récursifs) : 
+(\exists_{<0}L{ \top}\{not p} - L{ \top}\{p})  où p = org/gjt/sp/jedit/buffer/LineManager
+L’appel de org/gjt/sp/jedit/buffer/KillRing est produit combien de pas après celui de org/gjt/sp/jedit/buffer/ContentManager
+org/gjt/sp/jedit/buffer/ContentManager  D org/gjt/sp/jedit/buffer/KillRing
+Combien d’appel  à org/gjt/sp/jedit/buffer/LineManager  ont lieu avant le premioère appel à org/gjt/sp/jedit/buffer/UndoManager  Section 5, 1e exemple, 3e prop. 
+
+
