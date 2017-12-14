@@ -11,48 +11,51 @@ public class CountSimpleTest {
     @Test
     public void testTrue() throws FunctionException {
         CountSimple count = new CountSimple(Troolean.TRUE);
-        assertEquals(count.getValue(Troolean.INCONCLUSIVE), (Integer) 0);
-        assertEquals(count.getValue(Troolean.FALSE),        (Integer) 0);
-        assertEquals(count.getValue(Troolean.TRUE),         (Integer) 1);
-        assertEquals(count.getValue(Troolean.TRUE),         (Integer) 2);
-        assertEquals(count.getValue(Troolean.FALSE),        (Integer) 2);
-        assertEquals(count.getValue(Troolean.INCONCLUSIVE), (Integer) 2);
-        assertEquals(count.getValue(Troolean.TRUE),         (Integer) 3);
-        assertEquals(count.getValue(Troolean.TRUE),         (Integer) 4);
-        assertEquals(count.getValue(Troolean.FALSE),        (Integer) 4);
-        assertEquals(count.getValue(Troolean.INCONCLUSIVE), (Integer) 4);
-        assertEquals(count.getValue(Troolean.TRUE),         (Integer) 5);
+        assertEquals((Integer) 0, count.getValue(Troolean.INCONCLUSIVE));
+        assertEquals((Integer) 0, count.getValue(Troolean.FALSE));
+        assertEquals((Integer) 1, count.getValue(Troolean.TRUE));
+        assertEquals((Integer) 1, count.getValue(Troolean.FALSE));
+        assertEquals((Integer) 1, count.getValue(Troolean.INCONCLUSIVE));
+        assertEquals((Integer) 2, count.getValue(Troolean.TRUE));
+        assertEquals((Integer) 3, count.getValue(Troolean.TRUE));
+        assertEquals((Integer) 3, count.getValue(Troolean.FALSE));
+        assertEquals((Integer) 3, count.getValue(Troolean.FALSE));
+        assertEquals((Integer) 3, count.getValue(Troolean.INCONCLUSIVE));
+        assertEquals((Integer) 3, count.getValue(Troolean.INCONCLUSIVE));
+        assertEquals((Integer) 4, count.getValue(Troolean.TRUE));
     }
 
     @Test
     public void testFalse() throws FunctionException {
         CountSimple count = new CountSimple(Troolean.FALSE);
-        assertEquals(count.getValue(Troolean.INCONCLUSIVE), (Integer) 0);
-        assertEquals(count.getValue(Troolean.FALSE),        (Integer) 1);
-        assertEquals(count.getValue(Troolean.TRUE),         (Integer) 1);
-        assertEquals(count.getValue(Troolean.TRUE),         (Integer) 1);
-        assertEquals(count.getValue(Troolean.FALSE),        (Integer) 2);
-        assertEquals(count.getValue(Troolean.INCONCLUSIVE), (Integer) 2);
-        assertEquals(count.getValue(Troolean.TRUE),         (Integer) 2);
-        assertEquals(count.getValue(Troolean.TRUE),         (Integer) 2);
-        assertEquals(count.getValue(Troolean.FALSE),        (Integer) 3);
-        assertEquals(count.getValue(Troolean.INCONCLUSIVE), (Integer) 3);
-        assertEquals(count.getValue(Troolean.TRUE),         (Integer) 3);
+        assertEquals((Integer) 0, count.getValue(Troolean.INCONCLUSIVE));
+        assertEquals((Integer) 1, count.getValue(Troolean.FALSE));
+        assertEquals((Integer) 1, count.getValue(Troolean.TRUE));
+        assertEquals((Integer) 2, count.getValue(Troolean.FALSE));
+        assertEquals((Integer) 2, count.getValue(Troolean.INCONCLUSIVE));
+        assertEquals((Integer) 2, count.getValue(Troolean.TRUE));
+        assertEquals((Integer) 2, count.getValue(Troolean.TRUE));
+        assertEquals((Integer) 3, count.getValue(Troolean.FALSE));
+        assertEquals((Integer) 4, count.getValue(Troolean.FALSE));
+        assertEquals((Integer) 4, count.getValue(Troolean.INCONCLUSIVE));
+        assertEquals((Integer) 4, count.getValue(Troolean.INCONCLUSIVE));
+        assertEquals((Integer) 4, count.getValue(Troolean.TRUE));
     }
 
     @Test
     public void testInconclusive() throws FunctionException {
         CountSimple count = new CountSimple(Troolean.INCONCLUSIVE);
-        assertEquals(count.getValue(Troolean.INCONCLUSIVE), (Integer) 1);
-        assertEquals(count.getValue(Troolean.FALSE),        (Integer) 1);
-        assertEquals(count.getValue(Troolean.TRUE),         (Integer) 1);
-        assertEquals(count.getValue(Troolean.TRUE),         (Integer) 1);
-        assertEquals(count.getValue(Troolean.FALSE),        (Integer) 1);
-        assertEquals(count.getValue(Troolean.INCONCLUSIVE), (Integer) 2);
-        assertEquals(count.getValue(Troolean.TRUE),         (Integer) 2);
-        assertEquals(count.getValue(Troolean.TRUE),         (Integer) 2);
-        assertEquals(count.getValue(Troolean.FALSE),        (Integer) 2);
-        assertEquals(count.getValue(Troolean.INCONCLUSIVE), (Integer) 3);
-        assertEquals(count.getValue(Troolean.TRUE),         (Integer) 3);
+        assertEquals((Integer) 1, count.getValue(Troolean.INCONCLUSIVE));
+        assertEquals((Integer) 1, count.getValue(Troolean.FALSE));
+        assertEquals((Integer) 1, count.getValue(Troolean.TRUE));
+        assertEquals((Integer) 1, count.getValue(Troolean.FALSE));
+        assertEquals((Integer) 2, count.getValue(Troolean.INCONCLUSIVE));
+        assertEquals((Integer) 2, count.getValue(Troolean.TRUE));
+        assertEquals((Integer) 2, count.getValue(Troolean.TRUE));
+        assertEquals((Integer) 2, count.getValue(Troolean.FALSE));
+        assertEquals((Integer) 2, count.getValue(Troolean.FALSE));
+        assertEquals((Integer) 3, count.getValue(Troolean.INCONCLUSIVE));
+        assertEquals((Integer) 4, count.getValue(Troolean.INCONCLUSIVE));
+        assertEquals((Integer) 4, count.getValue(Troolean.TRUE));
     }
 }
