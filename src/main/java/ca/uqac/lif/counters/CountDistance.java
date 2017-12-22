@@ -8,14 +8,15 @@ public class CountDistance extends Count {
     private int currentIndex;
     private int firstValidIndex;
 
-    public CountDistance(Troolean toCount) {
+    public CountDistance(Troolean.Value toCount) {
         super(toCount);
         this.currentIndex = 1;
         this.firstValidIndex = 0;
     }
 
-    public Integer getValue(Troolean troolean) throws FunctionException {
-        if(firstValidIndex == 0 && isTrooleanToCount(troolean))
+    @Override
+    public Integer getValue(Troolean.Value troolean) throws FunctionException {
+        if(firstValidIndex == 0 && toCount == troolean)
             firstValidIndex = currentIndex;
 
         currentIndex++;

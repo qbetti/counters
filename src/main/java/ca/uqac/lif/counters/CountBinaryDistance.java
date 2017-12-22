@@ -8,14 +8,14 @@ public class CountBinaryDistance extends CountBinary {
     private final CountDistance count1;
     private final CountDistance count2;
 
-    public CountBinaryDistance(Troolean toCount) {
+    public CountBinaryDistance(Troolean.Value toCount) {
         super(toCount);
         this.count1 = new CountDistance(toCount);
         this.count2 = new CountDistance(toCount);
     }
 
     @Override
-    public Integer getValue(Troolean troolean1, Troolean troolean2) {
+    public Integer getValue(Troolean.Value troolean1, Troolean.Value troolean2) {
         int dist1 = 0, dist2 = 0;
 
         try {

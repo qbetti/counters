@@ -8,14 +8,15 @@ public class CountLocal extends Count {
     private int currentIndex;
     private int lastValidIndex;
 
-    public CountLocal(Troolean toCount) {
+    public CountLocal(Troolean.Value toCount) {
         super(toCount);
         this.currentIndex = 1;
         this.lastValidIndex = 0;
     }
 
-    public Integer getValue(Troolean troolean) throws FunctionException {
-        if(isTrooleanToCount(troolean))
+    @Override
+    public Integer getValue(Troolean.Value troolean) throws FunctionException {
+        if(toCount == troolean)
             lastValidIndex = currentIndex;
 
         currentIndex++;
