@@ -16,6 +16,7 @@ public class CSVResultWriter {
         startingTime = -1;
         try {
             writer = new PrintWriter(filePath, "UTF-8");
+            writer.println("Number of events, Time (ms)");
 
         } catch (FileNotFoundException | UnsupportedEncodingException e) {
             e.printStackTrace();

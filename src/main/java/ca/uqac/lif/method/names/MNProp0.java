@@ -15,22 +15,25 @@ import ca.uqac.lif.cep.tmf.Fork;
 import ca.uqac.lif.counters.CountLocal;
 import ca.uqac.lif.quantifiers.ExistentialQuantifier;
 
-public class LineManagerSeries {
+/**
+ * Est-ce qu’il existe une série ininterrompue d’appel de la fct org/gjt/sp/jedit/buffer/LineManager
+ * de longueur de plus 10 (test du nombre max d’appel récursifs) :
+ * (\exists_{<0}L{ \top}\{not p} - L{ \top}\{p})  où p = org/gjt/sp/jedit/buffer/LineManager
+ */
+public class MNProp0 {
 
 
     public static void main(String[] args) throws Connector.ConnectorException {
         LineReader lr = Util.getLineReaderOnFile(Literal.FILE_METHOD_NAMES);
-
         Processor matchLineManagerMethod = Util.buildStringMatchToTrooleanProcessor(Literal.METHOD_LINE_MANAGER);
-
-        Connector.connect(lr, matchLineManagerMethod);
-
         Fork fork = new Fork(2);
         Processor countLastMatch = new FunctionProcessor(new CountLocal(Troolean.Value.TRUE));
         Processor countLastNotMatch = new FunctionProcessor(new CountLocal(Troolean.Value.FALSE));
         Processor diff = new FunctionProcessor(Subtraction.instance);
         Processor quantify = new FunctionProcessor(new ExistentialQuantifier(-10, IsLessThan.instance));
 
+
+        Connector.connect(lr, matchLineManagerMethod);
         Connector.connect(matchLineManagerMethod, fork);
         Connector.connect(fork, 0, countLastMatch, 0);
         Connector.connect(fork, 1, countLastNotMatch, 0);
@@ -38,13 +41,13 @@ public class LineManagerSeries {
         Connector.connect(countLastMatch, 0, diff, 1);
         Connector.connect(diff, quantify);
 
+
         Pullable pullable = quantify.getPullableOutput();
         int i = 1;
         boolean found = false;
-
         long startTime = System.currentTimeMillis();
 
-        CSVResultWriter writer = new CSVResultWriter("linemngseries_result.csv", 100000);
+        CSVResultWriter writer = new CSVResultWriter(Literal.RESULTS_METHOD_NAMES_PROP_0, 100000);
 
         while(pullable.hasNext()) {
 

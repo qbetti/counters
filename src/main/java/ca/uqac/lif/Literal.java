@@ -12,4 +12,9 @@ public class Literal {
     public static final String METHOD_KILL_RING = "org/gjt/sp/jedit/buffer/KillRing";
     public static final String METHOD_CONTENT_MANAGER = "org/gjt/sp/jedit/buffer/ContentManager";
     public static final String METHOD_UNDO_MANAGER = "org/gjt/sp/jedit/buffer/UndoManager";
+
+    public static final String RESULTS_DIR = "results/";
+    public static final String RESULTS_METHOD_NAMES_PROP_0 = RESULTS_DIR + "mn_prop0.csv";
+    public static final String RESULTS_METHOD_NAMES_PROP_1 = RESULTS_DIR + "mn_prop1.csv";
+    public static final String RESULTS_METHOD_NAMES_PROP_2 = RESULTS_DIR + "mn_prop2.csv";
 }
