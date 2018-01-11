@@ -1,5 +1,6 @@
 package ca.uqac.lif.method.names;
 
+import ca.uqac.lif.CSVResultWriter;
 import ca.uqac.lif.Literal;
 import ca.uqac.lif.Util;
 import ca.uqac.lif.cep.Connector;
@@ -40,12 +41,23 @@ public class LineManagerSeries {
         Pullable pullable = quantify.getPullableOutput();
         int i = 1;
         boolean found = false;
+
+        long startTime = System.currentTimeMillis();
+
+        CSVResultWriter writer = new CSVResultWriter("linemngseries_result.csv", 100000);
+
         while(pullable.hasNext()) {
+
             if(Troolean.Value.TRUE == ((Troolean) pullable.pull()).getValue() && !found) {
                 System.out.println("Uninterrupted series of \""+ Literal.METHOD_LINE_MANAGER +"\" calls found, first at position " + i);
                 found = true;
             }
             i++;
+            writer.write();
         }
+
+        writer.close();
+        System.out.println("Done in " + (System.currentTimeMillis() - startTime) + "ms");
+
     }
 }

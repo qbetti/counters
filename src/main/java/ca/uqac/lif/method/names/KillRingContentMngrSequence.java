@@ -1,5 +1,6 @@
 package ca.uqac.lif.method.names;
 
+import ca.uqac.lif.CSVResultWriter;
 import ca.uqac.lif.Literal;
 import ca.uqac.lif.Util;
 import ca.uqac.lif.cep.Connector;
@@ -33,12 +34,20 @@ public class KillRingContentMngrSequence {
 
         boolean found = false;
 
+        long startTime = System.currentTimeMillis();
+
+        CSVResultWriter resultWriter = new CSVResultWriter("killring_result.csv", 100000L);
         while(pullable.hasNext()) {
             Integer interval = (Integer) pullable.pull();
             if(interval != 0 && !found) {
                 System.out.println("Interval between KillRing and ContentManager calls is " + interval);
                 found = true;
             }
+            resultWriter.write();
         }
+
+        resultWriter.close();
+
+        System.out.println("Done in " + (System.currentTimeMillis() - startTime) + "ms");
     }
 }

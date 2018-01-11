@@ -8,8 +8,10 @@ import ca.uqac.lif.method.names.LineMngrOccurencesBeforeUndoMngr;
 public class App {
 
     public static void main(String[] args) throws Connector.ConnectorException {
-        KillRingContentMngrSequence.main(args);
-        LineManagerSeries.main(args);
-        LineMngrOccurencesBeforeUndoMngr.main(args);
+        for(int i = 0; i < 5; i++) {
+            KillRingContentMngrSequence.main(args);
+            LineManagerSeries.main(args);
+            LineMngrOccurencesBeforeUndoMngr.main(args);
+        }
     }
 }

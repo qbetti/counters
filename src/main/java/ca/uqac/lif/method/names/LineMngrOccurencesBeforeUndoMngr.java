@@ -1,5 +1,6 @@
 package ca.uqac.lif.method.names;
 
+import ca.uqac.lif.CSVResultWriter;
 import ca.uqac.lif.CustomGlobally;
 import ca.uqac.lif.Literal;
 import ca.uqac.lif.Util;
@@ -42,6 +43,10 @@ public class LineMngrOccurencesBeforeUndoMngr {
         int i = 1, pos = 0;
         boolean found = false;
         Integer result = 0;
+
+        long startTime = System.currentTimeMillis();
+
+        CSVResultWriter writer = new CSVResultWriter("linemngbeforeundomng_result.csv", 100000);
         while(pullable.hasNext()) {
              result = (Integer) pullable.pull();
 
@@ -50,9 +55,14 @@ public class LineMngrOccurencesBeforeUndoMngr {
                 found = true;
             }
             i++;
+            writer.write();
         }
 
+        writer.close();
+
         System.out.println(result +" LineManager found before first UndoManager, first LineManager at position "+ pos);
+        System.out.println("Done in " + (System.currentTimeMillis() - startTime) + "ms");
+
     }
 
 }
