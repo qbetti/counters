@@ -10,7 +10,7 @@ public class PropositionalQuantifier extends Quantify {
     }
 
     @Override
-    public Troolean quantify(boolean b) {
-        return b ? Troolean.TRUE : Troolean.FALSE;
+    public Troolean.Value quantify(boolean b) {
+        return b ? Troolean.Value.TRUE : Troolean.Value.FALSE;
     }
 }

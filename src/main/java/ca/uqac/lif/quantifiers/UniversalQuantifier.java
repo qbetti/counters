@@ -6,7 +6,7 @@ import ca.uqac.lif.cep.ltl.Troolean;
 
 public class UniversalQuantifier extends Quantify {
 
-    private Troolean quantified;
+    private Troolean.Value quantified;
 
     public UniversalQuantifier(int toCompareWith, BinaryFunction<?, ?, Boolean> comparator) {
         super(toCompareWith, comparator);
@@ -14,15 +14,15 @@ public class UniversalQuantifier extends Quantify {
     }
 
     @Override
-    public Troolean quantify(boolean b) {
+    public Troolean.Value quantify(boolean b) {
         if(quantified != null) {
             return quantified;
 
         } else if(b) {
-            return Troolean.INCONCLUSIVE;
+            return Troolean.Value.INCONCLUSIVE;
 
         } else {
-            quantified = Troolean.FALSE;
+            quantified = Troolean.Value.FALSE;
             return quantified;
         }
     }

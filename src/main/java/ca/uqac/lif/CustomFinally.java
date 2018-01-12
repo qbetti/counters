@@ -5,26 +5,26 @@ import ca.uqac.lif.cep.ProcessorException;
 import ca.uqac.lif.cep.UniformProcessor;
 import ca.uqac.lif.cep.ltl.Troolean;
 
-public class CustomGlobally extends UniformProcessor {
+public class CustomFinally extends UniformProcessor {
 
-    private boolean hasBeenFalseOnce;
+    private boolean hasBeenTrueOnce;
 
-    public CustomGlobally() {
+    public CustomFinally() {
         super(1, 1);
-        this.hasBeenFalseOnce = false;
+        this.hasBeenTrueOnce = false;
     }
 
     @Override
     protected boolean compute(Object[] inputs, Object[] outputs) {
         Troolean.Value value = (Troolean.Value) inputs[0];
 
-        if(hasBeenFalseOnce) {
-            outputs[0] = Troolean.Value.FALSE;
+        if(hasBeenTrueOnce) {
+            outputs[0] = Troolean.Value.TRUE;
 
         } else {
-            if(value == Troolean.Value.FALSE) {
+            if(value == Troolean.Value.TRUE) {
                 outputs[0] = value;
-                hasBeenFalseOnce = true;
+                hasBeenTrueOnce = true;
             } else {
                 outputs[0] = Troolean.Value.INCONCLUSIVE;
             }
@@ -33,7 +33,7 @@ public class CustomGlobally extends UniformProcessor {
     }
 
     @Override
-    public Processor clone() {
-        return new CustomGlobally();
+    public CustomFinally clone() {
+        return new CustomFinally();
     }
 }

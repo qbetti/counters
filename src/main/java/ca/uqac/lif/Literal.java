@@ -16,9 +16,13 @@ public class Literal {
 
     public static final String EVENT_LOGON  = "Logon";
     public static final String EVENT_LOGOFF = "Logoff";
+    public static final String EVENT_SPU = "Sensitive Privilege Use";
 
     public static final String RESULTS_DIR = "results/";
     public static final String RESULTS_METHOD_NAMES_PROP_0 = RESULTS_DIR + "mn_prop0.csv";
     public static final String RESULTS_METHOD_NAMES_PROP_1 = RESULTS_DIR + "mn_prop1.csv";
     public static final String RESULTS_METHOD_NAMES_PROP_2 = RESULTS_DIR + "mn_prop2.csv";
+    public static final String RESULTS_AD_PROP_0 = RESULTS_DIR + "ad_prop0.csv";
+    public static final String RESULTS_AD_PROP_1 = RESULTS_DIR + "ad_prop1.csv";
+    public static final String RESULTS_AD_PROP_2 = RESULTS_DIR + "ad_prop2.csv";
 }

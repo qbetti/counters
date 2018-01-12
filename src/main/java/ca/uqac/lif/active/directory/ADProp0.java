@@ -1,5 +1,6 @@
 package ca.uqac.lif.active.directory;
 
+import ca.uqac.lif.CSVResultWriter;
 import ca.uqac.lif.Literal;
 import ca.uqac.lif.Util;
 import ca.uqac.lif.cep.Connector;
@@ -21,7 +22,11 @@ import ca.uqac.lif.counters.CountLocal;
 import ca.uqac.lif.counters.CountSimple;
 import ca.uqac.lif.quantifiers.PropositionalQuantifier;
 
-public class Prop0 {
+/**
+ * Quel pourcentage de la trace dans un intervalle ou un logon a eu lieu,
+ * et le logoff correspondant n’a pas encore eu lieu.
+ */
+public class ADProp0 {
 
     public static void main(String[] args) throws Connector.ConnectorException {
         LineReader lr = Util.getLineReaderOnFile(Literal.FILE_AD_LOG);
@@ -42,7 +47,6 @@ public class Prop0 {
         Processor division = new FunctionProcessor(Division.instance);
 
 
-
         Connector.connect(trooleanTrueFeeder, lengthCounter);
 
         Connector.connect(lr, fork);
@@ -61,13 +65,18 @@ public class Prop0 {
         Connector.connect(inBetweenLogonLogoffCounter, 0, division, 0);
         Connector.connect(lengthCounter, 0, division, 1);
 
+
         Pullable pullable = division.getPullableOutput();
         Number number = null;
+
+        CSVResultWriter writer = new CSVResultWriter(Literal.RESULTS_AD_PROP_0, 10000);
         while (pullable.hasNext()) {
             number = (Number) pullable.pull();
+            writer.write();
             System.out.println(number.toString());
         }
 
+        writer.close();
         System.out.println("Result: " + number.toString());
     }
 
