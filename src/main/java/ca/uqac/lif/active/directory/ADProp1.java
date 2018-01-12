@@ -61,10 +61,14 @@ public class ADProp1 {
 
         Pullable pullable = and.getPullableOutput();
         int i = 1;
+        boolean found = false;
         CSVResultWriter writer = new CSVResultWriter(Literal.RESULTS_AD_PROP_1, 10000);
         while (pullable.hasNext()) {
-            pullable.pull();
-//            System.out.println(i + ": " + pullable.pull().toString());
+            Troolean.Value val = (Troolean.Value) pullable.pull();
+            if(!found && val == Troolean.Value.TRUE) {
+                System.out.println("A logon/logoff interval of length greater than 100 exists, Logoff at line " + i);
+                found = true;
+            }
             writer.write();
             i++;
         }

@@ -1,5 +1,6 @@
 package ca.uqac.lif.active.directory;
 
+import ca.uqac.lif.CSVResultWriter;
 import ca.uqac.lif.Literal;
 import ca.uqac.lif.Util;
 import ca.uqac.lif.cep.Connector;
@@ -48,9 +49,16 @@ public class ADProp3 {
 
 
         Pullable pullable = quantifier.getPullableOutput();
+        CSVResultWriter writer = new CSVResultWriter(Literal.RESULTS_AD_PROP_3, 10000);
+        Troolean.Value result = Troolean.Value.FALSE;
         while (pullable.hasNext()) {
-            System.out.println(pullable.pull());
+            result = (Troolean.Value) pullable.pull();
+//            System.out.println(pullable.pull());
+            writer.write();
         }
+        writer.close();
 
+        if(result == Troolean.Value.INCONCLUSIVE)
+            System.out.println("There never are more logoffs than logons in this trace");
     }
 }

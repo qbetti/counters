@@ -1,5 +1,6 @@
 package ca.uqac.lif.active.directory;
 
+import ca.uqac.lif.CSVResultWriter;
 import ca.uqac.lif.CustomFinally;
 import ca.uqac.lif.Literal;
 import ca.uqac.lif.Util;
@@ -61,13 +62,16 @@ public class ADProp2 {
         Pullable pullable = finalCount.getPullableOutput();
 
         int i = 1;
+        int result = 0;
+        CSVResultWriter writer = new CSVResultWriter(Literal.RESULTS_AD_PROP_2, 10000);
         while(pullable.hasNext()) {
-            System.out.println(i+ ": " + pullable.pull());
-
-            if(i == 19)
-                System.out.println("");
+            result = ((Number) pullable.pull()).intValue();
+//            System.out.println(i+ ": " + pullable.pull());
+            writer.write();
             i++;
         }
+        writer.close();
+        System.out.println(result + " logon/logoff pairs have been found");
 
     }
 

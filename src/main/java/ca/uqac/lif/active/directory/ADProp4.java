@@ -1,5 +1,6 @@
 package ca.uqac.lif.active.directory;
 
+import ca.uqac.lif.CSVResultWriter;
 import ca.uqac.lif.CustomFinally;
 import ca.uqac.lif.Literal;
 import ca.uqac.lif.Util;
@@ -64,9 +65,16 @@ public class ADProp4 {
 
         Pullable pullable = sub.getPullableOutput();
 
+        int result = 0;
+        CSVResultWriter writer = new CSVResultWriter(Literal.RESULTS_AD_PROP_4, 10000);
         while (pullable.hasNext()) {
-            System.out.println(pullable.pull());
+            result = ((Number) pullable.pull()).intValue();
+//            System.out.println(pullable.pull());
+            writer.write();
         }
+        writer.close();
+
+        System.out.println("There are " + result + " Sensitive Privilege Use events occurring between the first logon and logoff");
     }
 
 }

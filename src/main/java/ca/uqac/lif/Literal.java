@@ -25,4 +25,6 @@ public class Literal {
     public static final String RESULTS_AD_PROP_0 = RESULTS_DIR + "ad_prop0.csv";
     public static final String RESULTS_AD_PROP_1 = RESULTS_DIR + "ad_prop1.csv";
     public static final String RESULTS_AD_PROP_2 = RESULTS_DIR + "ad_prop2.csv";
+    public static final String RESULTS_AD_PROP_3 = RESULTS_DIR + "ad_prop3.csv";
+    public static final String RESULTS_AD_PROP_4 = RESULTS_DIR + "ad_prop4.csv";
 }

@@ -67,17 +67,15 @@ public class ADProp0 {
 
 
         Pullable pullable = division.getPullableOutput();
-        Number number = null;
+        Number result = null;
 
         CSVResultWriter writer = new CSVResultWriter(Literal.RESULTS_AD_PROP_0, 10000);
         while (pullable.hasNext()) {
-            number = (Number) pullable.pull();
+            result = (Number) pullable.pull();
             writer.write();
-            System.out.println(number.toString());
         }
-
         writer.close();
-        System.out.println("Result: " + number.toString());
+        System.out.println("Percentage of the trace in between a logon and the corresponding logoff: " + result.floatValue() * 100 + "%");
     }
 
 

@@ -51,7 +51,7 @@ public class MNProp0 {
 
         while(pullable.hasNext()) {
 
-            if(Troolean.Value.TRUE == ((Troolean) pullable.pull()).getValue() && !found) {
+            if(Troolean.Value.TRUE == (Troolean.Value) pullable.pull() && !found) {
                 System.out.println("Uninterrupted series of \""+ Literal.METHOD_LINE_MANAGER +"\" calls found, first at position " + i);
                 found = true;
             }
